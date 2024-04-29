@@ -55,7 +55,19 @@ class Statistics {
     }
 
     static mode() {
-        
+        const countMap = {}
+        let maxCount = 0
+        let mostCommonNumber
+
+        for (const number of this.array) {
+            countMap[number] = (countMap[number] || 0) + 1
+            if (countMap[number] > maxCount) {
+                maxCount = countMap[number]
+                mostCommonNumber = number
+            }
+        }
+
+        return { mostCommonNumber, count: maxCount }
     }
 }
  
@@ -68,3 +80,4 @@ console.log(Statistics.min())
 console.log(Statistics.max())
 console.log(Statistics.range())
 console.log(Statistics.mean())
+console.log(Statistics.mode())
