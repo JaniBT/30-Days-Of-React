@@ -49,3 +49,88 @@ const users = {
       points: 40
     }
 }
+
+function getMostSkilledUser(users) {
+  let userWithMostSkills
+  let maxSkills = 0
+
+  for (const user in users) {
+    if (users.hasOwnProperty(user)) {
+      const numSkills = users[user].skills.length
+      if (numSkills > maxSkills) {
+        maxSkills = numSkills
+        userWithMostSkills = user
+      }
+    }
+  }
+
+  return userWithMostSkills
+}
+
+console.log(getMostSkilledUser(users))
+
+function countLoggedInUsers(users) {
+  let usersLoggedIn = 0
+
+  for (const user in users) {
+    if (users.hasOwnProperty(user)) {
+      const isLoggedIn = users[user].isLoggedIn
+      if (isLoggedIn) {
+        usersLoggedIn += 1
+      }
+    }
+  }
+
+  return usersLoggedIn
+}
+
+console.log(countLoggedInUsers(users))
+
+function countUsersWithMoreThanSpecificPoints(users) {
+  const specifiedPoints = 50
+  let usersWithSpecificPoints = 0
+
+  for (const user in users) {
+    if (users.hasOwnProperty(user)) {
+      const points = users[user].points
+      if (points >= specifiedPoints) {
+        usersWithSpecificPoints += 1
+      }
+    }
+  }
+
+  return usersWithSpecificPoints
+}
+
+console.log(countUsersWithMoreThanSpecificPoints(users))
+
+/** MERN STACK:
+ * Express
+ * Node
+ * React
+ * MongoDB
+ * 
+ * */
+
+function getUsersWithMernStack(users) {
+  let usersWithMern = []
+  
+  for (const user in users) {
+    if (users.hasOwnProperty(user)) {
+      const MernStackUser = users[user].skills.includes("Express" && "Node" && "React" && "MongoDB")
+      if (MernStackUser) {
+        usersWithMern.push(user)
+      }
+    }
+  }
+
+  return usersWithMern
+}
+
+console.log(getUsersWithMernStack(users))
+
+const me = Object.create(users)
+
+me.name = 'JaniBT'
+
+console.log(me)
